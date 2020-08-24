@@ -90,11 +90,6 @@ const get = (url, params = {}) => request({
   params,
 });
 
-const put = (url, data = {}) => request({
-  url,
-  method: 'put',
-  data,
-});
 
 const post = (url, data = {}) => request({
   url,
@@ -102,14 +97,9 @@ const post = (url, data = {}) => request({
   data,
 });
 
-const del = (url, data = {}) => request({
-  url,
-  method: 'delete',
-  data,
-})
 // 将获取cancelToken的方法绑定到每个方法上面，方便调用的时候使用
 // eslint-disable-next-line semi-style
-;[request, get, post, put, del, instance].forEach((item:any) => {
+[request, get, post, instance].forEach((item:any) => {
   item.getCancelToken = () => axios.CancelToken;
 });
 
@@ -120,5 +110,5 @@ const del = (url, data = {}) => request({
  * axios 对axios进行包装之后的原生实例
  */
 export {
-  request, get, post, put, del, instance as axios, baseURL,
+  request, get, post, instance as axios, baseURL,
 };
