@@ -9,14 +9,14 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // 为了首屏加载快，所以首页不使用懒加载
-import Home from '../views/home';
+import Home from '../views/home/index.vue';
 
 const originalPush = VueRouter.prototype.push;
 
 // 处理路由跳转会报错的问题
-VueRouter.prototype.push = function push(...rest) {
-  return originalPush.apply(this, rest).catch(err => err);
-};
+// VueRouter.prototype.push = function push(...rest) {
+//   return originalPush.apply(this, rest).catch(err => err);
+// };
 
 Vue.use(VueRouter);
 
@@ -33,7 +33,7 @@ const routes = [
   {
     path: '/no-permission',
     name: 'NoPermission',
-    component: () => import('@/views/error-page/no-permission'),
+    component: () => import('@/views/error-page/no-permission/index.vue'),
     meta: {
       title: '访问无权限',
     },
@@ -42,7 +42,7 @@ const routes = [
   {
     path: '*',
     name: 'NotFound',
-    component: () => import('@/views/error-page/404'),
+    component: () => import('@/views/error-page/404/index.vue'),
     meta: {
       title: '页面走丢了',
     },

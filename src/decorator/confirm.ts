@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Dialog } from 'vant';
 
 /**
@@ -9,7 +10,7 @@ import { Dialog } from 'vant';
 export function confirm(message, title = '提示', cancelFn = () => {}) {
   return (target, name, descriptor) => {
     const originFn = descriptor.value;
-    descriptor.value = async (...rest) => {
+    descriptor.value = async function(...rest) {
       try {
         await Dialog.confirm({
           message,
@@ -18,7 +19,7 @@ export function confirm(message, title = '提示', cancelFn = () => {}) {
         originFn.apply(this, rest);
       } catch (error) {
         if (cancelFn) {
-          cancelFn(error);
+          cancelFn();
         }
       }
     };
@@ -33,7 +34,7 @@ export function confirm(message, title = '提示', cancelFn = () => {}) {
 export function alert(message, title = '提示') {
   return (target, name, descriptor) => {
     const originFn = descriptor.value;
-    descriptor.value = async (...rest) => {
+    descriptor.value = async function(...rest) {
       await Dialog.confirm({
         message,
         title,

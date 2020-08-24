@@ -24,15 +24,15 @@ instance.interceptors.request.use(
     // config.headers['Authorization'] = `Bearer ${store.getters.getAccessToken}`
 
     // 如果get  请求有缓存，可以加这段代码
-    if (config.method === 'get') {
-      const now = `${Date.now()}`;
-      if (config.params) {
-        config.params[now] = now;
-      } else {
-        const hasParams = config.url.includes('?');
-        config.url = `${config.url + (hasParams ? '&' : '?')}${now}=${now}`;
-      }
-    }
+    // if (config.method === 'get') {
+    //   const now = `${Date.now()}`;
+    //   if (config.params) {
+    //     config.params[now] = now;
+    //   } else {
+    //     const hasParams = config.url.includes('?');
+    //     config.url = `${config.url + (hasParams ? '&' : '?')}${now}=${now}`;
+    //   }
+    // }
 
     return config;
   },
@@ -109,7 +109,7 @@ const del = (url, data = {}) => request({
 })
 // 将获取cancelToken的方法绑定到每个方法上面，方便调用的时候使用
 // eslint-disable-next-line semi-style
-;[request, get, post, put, del, instance].forEach((item) => {
+;[request, get, post, put, del, instance].forEach((item:any) => {
   item.getCancelToken = () => axios.CancelToken;
 });
 
