@@ -1,8 +1,8 @@
 /**
  * @file ESLint配置，基于aribnb规则 http://airbnb.io/javascript/
- * @author ytyang
+ * @author BoBo
  * @copyright NanJing Anshare Tech .Com
- * @createDate 2018年11月13日11:21:51
+ * @createDate 2020年09月07日18:17:23
  */
 module.exports = {
   root: true,
@@ -40,10 +40,6 @@ module.exports = {
     'class-methods-use-this': 'off',
   },
   parserOptions: {
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      // 支持装饰器
-      legacyDecorators: true,
-    },
+    parser: '@typescript-eslint/parser',
   },
 };

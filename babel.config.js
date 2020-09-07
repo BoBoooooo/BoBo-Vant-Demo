@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  presets: ['@vue/cli-plugin-babel/preset'],
+  presets: ['@vue/app'],
   plugins: [
     // 让系统支持可选链
     '@babel/plugin-proposal-optional-chaining',

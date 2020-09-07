@@ -4,6 +4,7 @@ const webpackConfig = require('./config/webpack.config.js');
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
+  outputDir: process.env.VUE_APP_OUTPUTDIR,
   configureWebpack: (config) => {
     if (isProd) {
       // 配置webpack 压缩
@@ -34,7 +35,7 @@ module.exports = {
     sourceMap: !isProd,
     loaderOptions: {
       scss: {
-        additionalData: '@import "~@/style/_variables.scss";',
+        additionalData: '@import "~@/styles/_variables.scss";',
       },
     },
   },
