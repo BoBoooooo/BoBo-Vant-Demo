@@ -9,9 +9,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // 为了首屏加载快，所以首页不使用懒加载
-import Home from '../views/home/index.vue';
+import Layout from '../views/layout/index.vue';
 
-const originalPush = VueRouter.prototype.push;
+// const originalPush = VueRouter.prototype.push;
 
 // 处理路由跳转会报错的问题
 // VueRouter.prototype.push = function push(...rest) {
@@ -23,10 +23,50 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'Layout',
+    component: Layout,
     meta: {
       title: '首页',
+    },
+    children: [{
+      path: 'home',
+      component: () => import('@/views/home/Home.vue'),
+      name: 'Home',
+      meta: {
+        title: '首页',
+      },
+    },
+    {
+      path: 'tab1',
+      component: () => import('@/views/home/Tab1.vue'),
+      name: 'Tab1',
+      meta: {
+        title: '标签页一',
+      },
+    },
+    {
+      path: 'tab2',
+      component: () => import('@/views/home/Tab2.vue'),
+      name: 'Tab2',
+      meta: {
+        title: '标签页二',
+      },
+    },
+    {
+      path: 'mine',
+      component: () => import('@/views/home/Mine.vue'),
+      name: 'Mine',
+      meta: {
+        title: '个人中心',
+      },
+    }],
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/Login.vue'),
+    meta: {
+      title: '登录',
     },
   },
   // 无权限页面
@@ -60,9 +100,5 @@ const router = new VueRouter({
   },
 });
 
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title;
-  next();
-});
 
 export default router;
