@@ -11,12 +11,12 @@ import VueRouter from 'vue-router';
 // 为了首屏加载快，所以首页不使用懒加载
 import Layout from '../views/layout/index.vue';
 
-// const originalPush = VueRouter.prototype.push;
+const originalPush = VueRouter.prototype.push;
 
 // 处理路由跳转会报错的问题
-// VueRouter.prototype.push = function push(...rest) {
-//   return originalPush.apply(this, rest).catch(err => err);
-// };
+VueRouter.prototype.push = function push(...rest) {
+  return (originalPush as any).apply(this, rest).catch(err => err);
+};
 
 Vue.use(VueRouter);
 

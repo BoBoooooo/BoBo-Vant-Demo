@@ -1,6 +1,7 @@
 <template>
   <div class='container'>
-    <van-row>
+    <p class="label">个人信息</p>
+    <van-row class="info-container">
       <van-col span="8">
         <van-image round
                    width="5rem"
@@ -8,15 +9,20 @@
                    :src="photo" />
       </van-col>
       <van-col span="16">
-        {{realname}} {{deptname}} {{companyname}}
-        <van-button type="danger"
-                    round
-                    @click="back"
-                    size="small"
-                    icon="replay">退出登录</van-button>
+        <p>{{companyname}}</p>
+        <p>{{deptname}}</p>
+        <p>{{realname}}</p>
+
       </van-col>
     </van-row>
+    <van-divider />
 
+    <van-button type="danger"
+                round
+                class="button"
+                @click="back"
+                size="small"
+                icon="replay">退出登录</van-button>
   </div>
 </template>
 
@@ -24,7 +30,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { mapGetters } from 'vuex';
 import {
-  Image, Button, Row, Col,
+  Image, Button, Row, Col, Divider,
 } from 'vant';
 
 @Component({
@@ -37,6 +43,7 @@ import {
     [Button.name]: Button,
     [Row.name]: Row,
     [Col.name]: Col,
+    [Divider.name]: Divider,
   },
 })
 export default class extends Vue {
@@ -49,5 +56,20 @@ export default class extends Vue {
 <style lang='scss' scoped>
 .container {
   padding: 20px;
+  .info-container {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px dashed lightblue;
+    box-shadow: 0 0 5px #ebedf0;
+  }
+  .label {
+    padding-left: 5px;
+  }
+  .button {
+    display: block;
+    width: 300px;
+    margin: 0 auto;
+  }
 }
 </style>
