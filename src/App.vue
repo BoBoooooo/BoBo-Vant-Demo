@@ -8,9 +8,7 @@
 <template>
   <div id="app">
     <transition :name="transitionName">
-      <navigation>
-        <router-view class="router" />
-      </navigation>
+      <router-view class="router" />
     </transition>
   </div>
 </template>
@@ -22,12 +20,12 @@ export default {
     };
   },
   created() {
-    this.$navigation.on('forward', () => {
-      this.transitionName = 'van-slide-right';
-    });
-    this.$navigation.on('back', () => {
-      this.transitionName = 'van-slide-left';
-    });
+    // this.$navigation.on('forward', () => {
+    //   this.transitionName = 'van-slide-right';
+    // });
+    // this.$navigation.on('back', () => {
+    //   this.transitionName = 'van-slide-left';
+    // });
   },
 };
 </script>
