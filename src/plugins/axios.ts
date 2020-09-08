@@ -21,7 +21,6 @@ const service = axios.create({
 // 拦截请求
 service.interceptors.request.use(
   (config) => {
-    console.log(store.getters);
     if (store.getters.token && store.getters.token !== 'null') {
       // 让每个请求携带自定义token
       config.headers.auth = store.getters.token;

@@ -27,7 +27,7 @@ module.exports = {
   },
   // 不需要生产环境的 source map
   productionSourceMap: false,
-  publicPath: !isProd ? '/' : '',
+  publicPath: './',
   css: {
     // 是否将css 提取到独立的文件,生产环境提取，开发环境不提取
     extract: !!isProd,
