@@ -2,7 +2,7 @@ import Vue from 'vue';
 import axios from '@/plugins/axios';
 
 // 用于控制浏览器前进后退 使用keep-alive
-// import Navigation from 'vue-navigation';
+import Navigation from 'vue-navigation';
 import './permission';
 import FastClick from 'fastclick';
 
@@ -18,10 +18,10 @@ Vue.config.productionTip = false;
 // FastClick.attach(document.body);
 
 // 用于控制浏览器前进后退缓存
-// Vue.use(Navigation, {
-//   router,
-//   store,
-// });
+Vue.use(Navigation, {
+  router,
+  store,
+});
 
 // 开发环境下面使用vConsole进行调试
 if (process.env.NODE_ENV === 'development') {

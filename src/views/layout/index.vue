@@ -7,10 +7,10 @@
 
 <template>
   <div class="layout-container">
-
-      <!-- 主页面入口 -->
-      <router-view></router-view>
-
+      <navigation>
+        <!-- 主页面入口 -->
+        <router-view></router-view>
+      </navigation>
     <van-tabbar route>
       <van-tabbar-item icon="home-o"
                        to="/home">台账</van-tabbar-item>
@@ -26,10 +26,7 @@
 
 <script>
 // 使用vant 组件
-import {
-  Tabbar,
-  TabbarItem,
-} from 'vant';
+import { Tabbar, TabbarItem } from 'vant';
 
 export default {
   name: 'Layout',
@@ -39,10 +36,17 @@ export default {
   },
   data() {
     return {
-      active: 0,
+      transitionName: 'van-slide-right',
     };
   },
-  created() {},
+  created() {
+    this.$navigation.on('forward', () => {
+      this.transitionName = 'van-slide-right';
+    });
+    this.$navigation.on('back', () => {
+      this.transitionName = 'van-slide-left';
+    });
+  },
 };
 </script>
 <style lang="scss" scoped>
