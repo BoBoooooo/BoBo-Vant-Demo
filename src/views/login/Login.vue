@@ -68,7 +68,6 @@ export default class Login {
             path: '/home',
           })
           .catch((error) => {
-            console.info(error.message);
           });
       })
       .catch((error) => {
