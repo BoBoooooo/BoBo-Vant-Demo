@@ -20,7 +20,9 @@
     "pkg:dev": "npm run build:dev && node deployment/compression.js",
     "deploy:intranet-public:out": "npm run build:out && node deployment/compression.js -INTRANETDEMO",
     "eslint": "vue-cli-service lint",
-    "lint": "npm run eslint"
+    "lint": "npm run eslint",
+    "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0",
+    "cz": "npm run log && git add . && git cz"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -33,11 +35,11 @@
     "lodash": "^4.17.20",
     "vant": "^2.8.6",
     "vconsole": "^3.3.4",
-    "vue": "2.6.10",
+    "vue": "2.6.11",
     "vue-class-component": "^7.2.5",
     "vue-navigation": "^1.1.4",
     "vue-property-decorator": "^9.0.0",
-    "vue-router": "^3.2.0",
+    "vue-router": "3.4.3",
     "vuex": "^3.1.1"
   },
   "devDependencies": {
@@ -47,7 +49,6 @@
     "@vue/cli-plugin-babel": "^3.9.2",
     "@vue/cli-plugin-eslint": "^3.9.2",
     "@vue/cli-plugin-typescript": "~4.3.0",
-    "@vue/cli-plugin-router": "^4.4.0",
     "@vue/cli-service": "^4.4.0",
     "@vue/eslint-config-airbnb": "^4.0.1",
     "@vue/eslint-config-typescript": "^5.0.2",
@@ -71,9 +72,12 @@
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",
     "typescript": "~3.8.3",
+    "conventional-changelog-cli": "^2.1.0",
     "vue-cli-plugin-commitlint": "^1.0.12",
     "vue-cli-plugin-axios": "0.0.4",
-    "vue-template-compiler": "2.6.10"
+    "vue-template-compiler": "2.6.11",
+    "webpack": "^4.35.3",
+    "webpack-bundle-analyzer": "^3.3.2"
   },
   "husky": {
     "hooks": {
@@ -86,5 +90,10 @@
       "npm run lint",
       "git add"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/vue-cli-plugin-commitlint/lib/cz"
+    }
   }
 }

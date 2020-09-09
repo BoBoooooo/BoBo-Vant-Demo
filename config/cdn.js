@@ -8,11 +8,11 @@ module.exports = {
       exportName: 'Vue',
     },
     vuex: {
-      url: 'https://cdn.bootcdn.net/ajax/libs/vuex/3.2.0/vuex.js',
+      url: 'https://cdn.bootcss.com/vuex/3.5.1/vuex.min.js',
       exportName: 'Vuex',
     },
     'vue-router': {
-      url: 'https://cdn.bootcss.com/vue-router/3.2.0/vue-router.min.js',
+      url: 'https://cdn.bootcss.com/vue-router/3.4.3/vue-router.min.js',
       exportName: 'VueRouter',
     },
     axios: 'https://cdn.bootcss.com/axios/0.19.2/axios.min.js',
