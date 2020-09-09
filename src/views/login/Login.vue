@@ -57,7 +57,6 @@ export default class Login {
   btnLoginIsLoading = false;
 
   login() {
-    console.log(this);
     this.$store
       .dispatch('setTokenByLogin', this.loginForm)
       .then((res) => {
