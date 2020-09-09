@@ -27,8 +27,7 @@
                       style="margin-top:10px">查看详情</van-button>
         </template>
         <template #thumb>
-          <van-image
-                     width="4rem"
+          <van-image width="4rem"
                      height="4rem"
                      src="https://pic.downk.cc/item/5f5603b6160a154a67581321.png" />
         </template>
@@ -45,21 +44,9 @@
 
 <script>
 import { Component, Vue } from 'vue-property-decorator';
-import {
-  List, Cell, Card, Tag, Button, Search, Image,
-} from 'vant';
 
 @Component({
   name: 'Home',
-  components: {
-    [List.name]: List,
-    [Cell.name]: Cell,
-    [Card.name]: Card,
-    [Tag.name]: Tag,
-    [Button.name]: Button,
-    [Search.name]: Search,
-    [Image.name]: Image,
-  },
 })
 export default class extends Vue {
   list = [];

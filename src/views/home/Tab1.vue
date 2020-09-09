@@ -7,13 +7,9 @@
 
 <script>
 import { Component, Vue } from 'vue-property-decorator';
-import { Empty } from 'vant';
 
 @Component({
   name: 'Tab1',
-  components: {
-    [Empty.name]: Empty,
-  },
 })
 export default class extends Vue {}
 </script>

@@ -1,24 +1,31 @@
 <template>
   <div class='container'>
-    <p class="label">个人信息</p>
-    <van-row class="info-container">
-      <van-col span="8">
-        <van-image round
-                   width="5rem"
-                   height="5rem"
-                   :src="photo" />
-      </van-col>
-      <van-col span="16">
-        <p>{{companyname}}</p>
-        <p>{{deptname}}</p>
-        <p>{{realname}}</p>
+    <div class="info-container">
+      <van-row>
+        <van-col span="8">
+          <van-image round
+                     width="5rem"
+                     height="5rem"
+                     :src="photo" />
+        </van-col>
+        <van-col span="16">
+          <p>{{companyname}}</p>
+          <p>{{deptname}}</p>
+          <p>{{realname}}</p>
 
-      </van-col>
-    </van-row>
+        </van-col>
+      </van-row>
+    </div>
+    <van-divider />
+    <van-grid :column-num="3">
+      <van-grid-item v-for="value in 6"
+                     :key="value"
+                     icon="photo-o"
+                     text="文字" />
+    </van-grid>
     <van-divider />
 
     <van-button type="danger"
-                round
                 class="button"
                 @click="back"
                 size="small"
@@ -29,21 +36,11 @@
 <script>
 import { Component, Vue } from 'vue-property-decorator';
 import { mapGetters } from 'vuex';
-import {
-  Image, Button, Row, Col, Divider,
-} from 'vant';
 
 @Component({
   name: 'Mine',
   computed: {
     ...mapGetters(['photo', 'realname', 'deptname', 'companyname', 'rolename']),
-  },
-  components: {
-    [Image.name]: Image,
-    [Button.name]: Button,
-    [Row.name]: Row,
-    [Col.name]: Col,
-    [Divider.name]: Divider,
   },
 })
 export default class extends Vue {
@@ -55,21 +52,20 @@ export default class extends Vue {
 
 <style lang='scss' scoped>
 .container {
-  padding: 20px;
   .info-container {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px dashed lightblue;
-    box-shadow: 0 0 5px #ebedf0;
+    background: #3bba63;
+    padding: 20px 20px 5px;
+    p {
+      color: #323233;
+      font-size: 14px;
+    }
   }
   .label {
     padding-left: 5px;
   }
   .button {
     display: block;
-    width: 300px;
-    margin: 0 auto;
+    width: 100%;
   }
 }
 </style>

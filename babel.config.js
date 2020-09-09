@@ -15,15 +15,15 @@ module.exports = {
     // 让系统支持可选链
     '@babel/plugin-proposal-optional-chaining',
     // 配置 vant 按需加载
-    [
-      'import',
-      {
-        libraryName: 'vant',
-        libraryDirectory: 'es',
-        style: true,
-      },
-      'vant',
-    ],
+    // [
+    //   'import',
+    //   {
+    //     libraryName: 'vant',
+    //     libraryDirectory: 'es',
+    //     style: true,
+    //   },
+    //   'vant',
+    // ],
     ...prodPlugin,
   ],
 };

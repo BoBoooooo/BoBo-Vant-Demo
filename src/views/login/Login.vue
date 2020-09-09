@@ -41,17 +41,9 @@
 <script>
 import { Component, Vue } from 'vue-property-decorator';
 import { mapGetters } from 'vuex';
-import {
-  Field, Button, Form, Image,
-} from 'vant';
 
 @Component({
-  components: {
-    [Form.name]: Form,
-    [Field.name]: Field,
-    [Button.name]: Button,
-    [Image.name]: Image,
-  },
+
 })
 export default class Login {
   loginForm = {

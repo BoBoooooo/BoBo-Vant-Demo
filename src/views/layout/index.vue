@@ -25,15 +25,9 @@
 </template>
 
 <script>
-// 使用vant 组件
-import { Tabbar, TabbarItem } from 'vant';
 
 export default {
   name: 'Layout',
-  components: {
-    [Tabbar.name]: Tabbar,
-    [TabbarItem.name]: TabbarItem,
-  },
   data() {
     return {
       transitionName: 'van-slide-right',
