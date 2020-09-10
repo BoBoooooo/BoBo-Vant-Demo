@@ -19,7 +19,7 @@
     "pkg:out": "npm run build:out && node deployment/compression.js",
     "pkg:dev": "npm run build:dev && node deployment/compression.js",
     "deploy:intranet-public:out": "npm run build:out && node deployment/compression.js -INTRANETDEMO",
-    "eslint": "vue-cli-service lint",
+    "report:out": "vue-cli-service build --mode report",
     "lint": "npm run eslint",
     "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0",
     "cz": "npm run log && git add . && git cz"
@@ -77,7 +77,8 @@
     "vue-cli-plugin-axios": "0.0.4",
     "vue-template-compiler": "2.6.11",
     "webpack": "^4.35.3",
-    "webpack-bundle-analyzer": "^3.3.2"
+    "webpack-bundle-analyzer": "^3.3.2",
+    "svg-sprite-loader": "^4.1.6"
   },
   "husky": {
     "hooks": {
