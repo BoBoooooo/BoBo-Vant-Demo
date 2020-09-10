@@ -20,7 +20,7 @@
     "pkg:dev": "npm run build:dev && node deployment/compression.js",
     "deploy:intranet-public:out": "npm run build:out && node deployment/compression.js -INTRANETDEMO",
     "report:out": "vue-cli-service build --mode report",
-    "lint": "npm run eslint",
+    "lint": "vue-cli-service lint",
     "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0",
     "cz": "npm run log && git add . && git cz"
   },

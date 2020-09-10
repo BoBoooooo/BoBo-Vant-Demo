@@ -73,7 +73,7 @@ const routes = [
   {
     path: '/no-permission',
     name: 'NoPermission',
-    component: () => import('@/views/error-page/no-permission/index.vue'),
+    component: () => import('@/views/error-page/401.vue'),
     meta: {
       title: '访问无权限',
     },
@@ -82,7 +82,7 @@ const routes = [
   {
     path: '*',
     name: 'NotFound',
-    component: () => import('@/views/error-page/404/index.vue'),
+    component: () => import('@/views/error-page/404.vue'),
     meta: {
       title: '页面走丢了',
     },
