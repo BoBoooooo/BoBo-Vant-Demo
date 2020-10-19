@@ -78,20 +78,6 @@ const user = {
     },
     // 根据token请求用户信息并设置到store
     async getUserInfoByToken({ commit, state }) {
-      // 如果配置了“不请求后端接口”
-      if (process.env.VUE_APP_REQUEST_API === 'false') {
-        const promise = new Promise((resolve) => {
-          const data = {
-            RealName: '管理员',
-            UserName: 'admin',
-            RoleAuthName: '',
-          };
-          commit('SET_USER_REALNAME', data.RealName);
-          commit('SET_USERNAME', data.UserName);
-          resolve(data);
-        });
-        return promise;
-      }
       // 请求userinfo接口获取用户名和可访问页面
       const promise = await getInfo().then((response) => {
         const { data } = response;
