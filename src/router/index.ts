@@ -37,22 +37,6 @@ const routes = [
       },
     },
     {
-      path: 'tab1',
-      component: () => import('@/views/home/Tab1.vue'),
-      name: 'Tab1',
-      meta: {
-        title: '标签页一',
-      },
-    },
-    {
-      path: 'tab2',
-      component: () => import('@/views/home/Tab2.vue'),
-      name: 'Tab2',
-      meta: {
-        title: '标签页二',
-      },
-    },
-    {
       path: 'mine',
       component: () => import('@/views/home/Mine.vue'),
       name: 'Mine',

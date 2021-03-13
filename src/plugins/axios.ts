@@ -23,9 +23,8 @@ service.interceptors.request.use(
   (config) => {
     if (store.getters.token && store.getters.token !== 'null') {
       // 让每个请求携带自定义token
-      config.headers.auth = store.getters.token;
+      config.headers.Authorization = store.getters.token;
     }
-
     return config;
   },
   (error) => {
@@ -41,50 +40,24 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     const res = response.data;
-    // let { data } = res;
-    const { message, code } = res;
-    const { data } = res;
-
-    document.getElementsByTagName('body')[0].style.cursor = 'auto';
-
-    // 600表示token异常需要重新登录
-    if (code === 600) {
+    // 正常响应继续传递
+    return res;
+  },
+  (error) => {
+    const { code, message } = error.response.data;
+    // 401表示token异常需要重新登录
+    if (code === 401) {
       Dialog.alert({
         message: '账号已过期，重新登录。',
       }).then(() => {
         store.commit('SET_TOKEN', null);
         // 跳转登录页
-        window.location.reload(); // 为了重新实例化vue-router对象，避免bug
+        window.location.reload();
       });
-    } else if (code === 602) {
+    } else {
       // 开发阶段参数异常
       Dialog.alert({
-        message: `状态码：602，原因：${message}`,
-      });
-    } else if (code === 500) {
-      Dialog.alert({
-        message: `状态码：500<br>接口：${response.request.responseURL}<br>原因：${message}`,
-      });
-    } else if (code === 400) {
-      Dialog.alert({
-        message: `原因：${message}`,
-      });
-    }
-    // 正常响应继续传递
-    return res;
-  },
-  (error) => {
-    document.getElementsByTagName('body')[0].style.cursor = 'auto';
-    // http状态码200以外的情况
-    if (process.env.NODE_ENV !== 'test') {
-      // 请检查网络链接或联系管理员
-      const msg = '系统更新中，请稍后再试。';
-      Dialog.alert({
-        message: `${error.message}，${msg}`,
-      }).then(() => {
-        // 清空token
-        store.commit('SET_TOKEN', null);
-        window.location.reload(); // 为了重新实例化vue-router对象，避免bug
+        message,
       });
     }
     return Promise.reject(error);

@@ -13,11 +13,7 @@
       </navigation>
     <van-tabbar route>
       <van-tabbar-item icon="home-o"
-                       to="/home">台账</van-tabbar-item>
-      <van-tabbar-item icon="search"
-                       to="/tab1">待办</van-tabbar-item>
-      <van-tabbar-item icon="friends-o"
-                       to="/tab2">已办</van-tabbar-item>
+                       to="/home">员工</van-tabbar-item>
       <van-tabbar-item icon="setting-o"
                        to="/mine">我的</van-tabbar-item>
     </van-tabbar>

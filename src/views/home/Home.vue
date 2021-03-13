@@ -1,44 +1,49 @@
 <template>
-  <div class='container'>
-    <van-search v-model="searchContent"
-                shape="round"
-                placeholder="请输入搜索内容"
-                show-action
-                @search="reload()"
-                @cancel="reload()" />
-    <van-list v-model="loading"
-              :finished="finished"
-              finished-text="没有更多了"
-              @load="onLoad">
-
-      <van-card v-for="(item) in list"
-                :key="item.id"
-                :desc="item.cluecode"
-                :title="item.flowtitle || '暂无标题'">
+  <div class="container">
+    <van-search
+      v-model="searchContent"
+      shape="round"
+      placeholder="请输入搜索内容"
+      show-action
+      @search="reload()"
+      @cancel="reload()"
+    />
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoad"
+    >
+      <van-card
+        v-for="item in list"
+        :key="item.id"
+        :desc="item.jobno"
+        :title="item.personname || '暂无标题'"
+      >
         <template #tags>
-          <van-tag :key="index"
-                   v-for="(tag,index) in item.cluesource.split(',')"
-                   plain
-                   style="margin-left:4px"
-                   type="primary">{{tag}}</van-tag>
+          <van-tag
+            plain
+            style="margin-left:4px"
+            type="primary"
+            >{{ item.education }}</van-tag
+          >
         </template>
         <template #footer>
-          <van-button size="mini"
-                      style="margin-top:10px">查看详情</van-button>
+          <van-button size="mini" style="margin-top:10px">查看详情</van-button>
         </template>
         <template #thumb>
-          <van-image width="4rem"
-                     height="4rem"
-                     src="https://pic.downk.cc/item/5f5603b6160a154a67581321.png" />
+          <van-image
+            width="4rem"
+            height="4rem"
+            src="https://pic.downk.cc/item/5f5603b6160a154a67581321.png"
+          />
         </template>
         <template #num>
-          {{item.handledept}} /
-          {{item.receiver}}
+          {{ item.deptname }} / {{ item.post }} /
+          {{ item.level }}
         </template>
       </van-card>
-
     </van-list>
-
   </div>
 </template>
 
@@ -73,21 +78,10 @@ export default class extends Vue {
     reload = false,
   ) {
     this.axios({
-      url: '/business/act/clueinfo/listBusiness',
+      url: '/person/list',
       method: 'post',
       data: {
-        searchCondition: [
-          {
-            field: 'flowtitle',
-            operator: 'neq',
-            value: '',
-          },
-          {
-            field: 'flowtitle,cluesource,cluecode,personname',
-            operator: 'orlike',
-            value: this.searchContent,
-          },
-        ],
+        searchCondition: [],
         pageIndex,
         pageSize,
         orderCondition: '',
@@ -128,5 +122,4 @@ export default class extends Vue {
 }
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

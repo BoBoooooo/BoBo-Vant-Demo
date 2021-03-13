@@ -59,7 +59,7 @@ const user = {
       const promise = await login(userInfo).then((res) => {
         // 登录成功
         if (res.code === 200) {
-          commit('SET_TOKEN', res.data.token);
+          commit('SET_TOKEN', `Bearer ${res.data.token}`);
           return res.data;
         }
         // 登录失败清空token
@@ -98,10 +98,8 @@ const user = {
     },
     // 删除客户端和服务端Token
     async clearToken({ commit }) {
-      const promise = await logout().then(() => {
-        commit('SET_TOKEN', null);
-        window.location.reload();
-      });
+      commit('SET_TOKEN', null);
+      window.location.reload();
       return promise;
     },
     // 客户端timeOut
