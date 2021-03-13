@@ -100,7 +100,6 @@ const user = {
     async clearToken({ commit }) {
       commit('SET_TOKEN', null);
       window.location.reload();
-      return promise;
     },
     // 客户端timeOut
     async clientTimeOut({ commit }) {
